@@ -4,19 +4,16 @@ import SayMyName from './components/SayMyName';
 import Frase from './components/Frase';
 import Pessoa from './components/pessoa';
 import List from './components/List'
+import Evento from './components/Evento'
+import Form from './components/Form'
 
 
 function App() {
   return (
     <div className="App">
-      <h1>Testando CSS</h1>
-      <></>
-      <HelloWord></HelloWord>
-      <Frase></Frase>
-      <List></List>
-      <SayMyName nome = 'Ana Clara'></SayMyName>
-      <Pessoa nome='Ronaldo' idade="27" profissão = "Programador"></Pessoa>
-
+      <h1>Testando Eventos</h1>
+      <Evento/>
+      <Form/>
     </div>
   );
 }
