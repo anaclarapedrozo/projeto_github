@@ -6,9 +6,9 @@ function List() {
       <div>
         <h1>Minha lista</h1>
         <ul>
-          <Item marca="BMW"></Item>
-          <Item marca="Audi"></Item>
-          <Item marca="Honda"></Item>
+          <Item marca="BMW" lancamento={1929}></Item>
+          <Item marca="Audi" lancamento={1993}></Item>
+          <Item marca="Honda" lancamento={1971}></Item>
         </ul>
       </div>
     </>
