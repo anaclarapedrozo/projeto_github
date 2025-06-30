@@ -8,10 +8,11 @@ import Pessoa from './components/pessoa';
 function App() {
   return (
     <div className="App">
+      <h1>Testando CSS</h1>
       <Frase></Frase>
       <HelloWord></HelloWord>
       <SayMyName nome = 'Ana Clara'></SayMyName>
-      <Pessoa nome='Ana Clara' idade="17" profissão = "Programador" foto = 'https://via.placeholder.com/150'></Pessoa>
+      <Pessoa nome='Ronaldo' idade="17" profissão = "Programador"></Pessoa>
 
     </div>
   );
