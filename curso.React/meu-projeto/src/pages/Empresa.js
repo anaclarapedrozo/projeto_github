@@ -1,8 +1,10 @@
+import styles from './pages.module.css'
+
 function Empresa () {
     return (
         <div>
-            <h1>Empresa</h1>
-            <p>Conteúdo da empresa</p>
+            <h1 className={styles.textoAlt}>Empresa</h1>
+            <p className={styles.texto}>Conteúdo da empresa</p>
         </div>
     )
 }
