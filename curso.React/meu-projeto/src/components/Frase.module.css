@@ -7,9 +7,11 @@
 .fraseContent{
     color: rgb(162, 185, 185);
     background-color: darkslategray;
-    margin: 7px;
     font-weight: bolder; 
     width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .inputName{
