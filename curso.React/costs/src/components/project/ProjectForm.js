@@ -1,22 +1,27 @@
+import Input from "../form/input";
+import Select from "../form/Select";
+import SubmitButton from "../form/SubmitButton";
+import styles from "./ProjectForm.module.css";
+
 import { useState } from "react";
 
 function ProjectForm() {
   return (
-    <form>
-      <div>
-        <input type="text" placeholder="Digite o nome do projeto" />
-      </div>
-      <div>
-        <input type="number" placeholder="Digite o orçamento do total" />
-      </div>
-      <div>
-        <select>
-          <option disabled selected>Selecione a categoria</option>
-        </select>
-      </div>
-      <div>
-        <input type="submit" value="Criar projeto" />
-      </div>
+    <form className={styles.form}>
+      <Input
+        type="text"
+        text="Nome do projeto:"
+        name="name"
+        placeholder="Insira o nome do projeto"
+      />
+      <Input
+        type="number"
+        text="Orçamento do projeto: "
+        name="budget"
+        placeholder="Insira o orçamento total"
+      />
+     <Select name="category_id" text='Selecione a categoria'/>
+      <SubmitButton text='Criar projeto'/>
     </form>
   );
 }
