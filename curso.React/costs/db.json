@@ -30,8 +30,21 @@
         "id": "3",
         "name": "Desing"
       },
-      "cost": 0,
-      "services": []
+      "cost": 2460,
+      "services": [
+        {
+          "name": "Serviço 1",
+          "cost": "1230",
+          "description": "è mo",
+          "id": "d7c7b0a9-6aa1-459f-bb10-8a79fb2dea34"
+        },
+        {
+          "name": "Serviço 1",
+          "cost": "1230",
+          "description": "è mo",
+          "id": "d7c7b0a9-6aa1-459f-bb10-8a79fb2dea34"
+        }
+      ]
     },
     {
       "id": "09f5",
@@ -41,8 +54,21 @@
         "id": "4",
         "name": "Planejamento"
       },
-      "cost": 0,
-      "services": []
+      "cost": 1221,
+      "services": [
+        {
+          "name": "Blue Lock",
+          "cost": "1200",
+          "description": "Fut",
+          "id": "5f62be59-41ce-4bc9-9c0e-550cdf6ed7eb"
+        },
+        {
+          "name": "Kenma",
+          "cost": "21",
+          "description": "è mo",
+          "id": "e858344b-a6ee-429b-b8ef-9665a7614ff6"
+        }
+      ]
     }
   ],
   "categories": [
