@@ -3,7 +3,7 @@
     {
       "id": "e501",
       "name": "Haikyuu",
-      "budget": "8000",
+      "budget": "1000",
       "category": {
         "id": "3",
         "name": "Desing"
@@ -14,7 +14,7 @@
     {
       "id": "49c1",
       "name": "Blue Lock",
-      "budget": "1200",
+      "budget": "2000",
       "category": {
         "id": "4",
         "name": "Planejamento"
@@ -25,7 +25,7 @@
     {
       "id": "dcbd",
       "name": "Fullmetal",
-      "budget": "23000",
+      "budget": "3000",
       "category": {
         "id": "3",
         "name": "Desing"
@@ -36,7 +36,7 @@
     {
       "id": "07f6",
       "name": "Dragon Ball",
-      "budget": "200000",
+      "budget": "4000",
       "category": {
         "id": "1",
         "name": "Infra"
@@ -47,7 +47,7 @@
     {
       "id": "294a",
       "name": "Spy x Family",
-      "budget": "10000",
+      "budget": "5000",
       "category": {
         "id": "3",
         "name": "Desing"
