@@ -45,39 +45,6 @@
       "services": []
     },
     {
-      "id": "f0f9",
-      "category": {
-        "id": "2",
-        "name": "Desenvolvimento"
-      },
-      "name": "Yamada kun",
-      "budget": "4563",
-      "cost": 0,
-      "services": []
-    },
-    {
-      "id": "30a0",
-      "name": "axsxs",
-      "budget": "34343",
-      "category": {
-        "id": "4",
-        "name": "Planejamento"
-      },
-      "cost": 0,
-      "services": []
-    },
-    {
-      "id": "b87b",
-      "name": "Haikyuu",
-      "budget": "321111",
-      "category": {
-        "id": "4",
-        "name": "Planejamento"
-      },
-      "cost": 0,
-      "services": []
-    },
-    {
       "id": "294a",
       "name": "Spy x Family",
       "budget": "10000",
