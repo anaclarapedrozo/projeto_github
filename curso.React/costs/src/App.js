@@ -7,21 +7,23 @@ import Container from "./components/layout/Container";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Projects from "./components/pages/Projects";
+import Project from "./components/pages/Project";
 
 function App() {
   return (
     <Router>
-     <Navbar/>
-      <Container customClass = 'min-heigth'>
+      <Navbar />
+      <Container customClass="min-heigth">
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/empresa" element={<Empresa />} />
           <Route path="/newproject" element={<NewProject />} />
+          <Route path="/project/:id" element={<Project />} />
         </Routes>
       </Container>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }
