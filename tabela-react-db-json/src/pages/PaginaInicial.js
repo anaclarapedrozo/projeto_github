@@ -1,3 +1,4 @@
+import Aviso from "../layout/Aviso";
 import Input from "../layout/Input";
 import Tabela from "../layout/Tabela";
 import { getUsuarios, postUsuarios } from "../service/api";
@@ -10,6 +11,7 @@ function PaginaInicial() {
   const [estadoCivil, setEstadoCivil] = useState("");
   const [cpf, setCpf] = useState(null);
   const [pessoas, setPessoas] = useState([]);
+  const [mostrarMsg, setMostrarMsg] = useState(false);
 
   async function carregarPagina() {
     try {
@@ -24,13 +26,15 @@ function PaginaInicial() {
   }, []);
 
   async function enviar() {
+    
     try {
-      const newUsuario = await postUsuarios({
+      await postUsuarios({
         nome: nome,
         idade: idade,
         estadoCivil: estadoCivil,
-        cpf: cpf,
+        cpf: cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4'),
       });
+      setMostrarMsg(false);
       await carregarPagina();
     } catch (erro) {
       console.error("Erro ao enviar usuario");
@@ -39,18 +43,16 @@ function PaginaInicial() {
 
   function handleCadastro() {
     if (nome === "" || idade === "" || cpf === "" || estadoCivil === "") {
-      alert("Os campos estão vazios");
-      return <p>Por favor, preencha todos os campos.</p>
-    } 
-    // else {
-    //   enviar();
-    // }
-    enviar()
-    carregarPagina();
+      setMostrarMsg(true);
+      return;
+    }
+    enviar();
+    setMostrarMsg(false);
     setNome("");
     setIdade("");
     setEstadoCivil("");
     setCpf("");
+    carregarPagina();
   }
 
   return (
@@ -82,16 +84,17 @@ function PaginaInicial() {
           type="number"
           placeholder=""
           label="CPF"
+          maxLength={14}
           onChange={(e) => setCpf(e.target.value)}
           value={cpf}
         />
-        
         <button onClick={handleCadastro} className={styles.btnSalvar}>
           Salvar
         </button>
         <div className={styles.tabelinha}>
           <Tabela lista={pessoas} carregarPg={() => carregarPagina()} />
         </div>
+        {mostrarMsg && <Aviso />}
       </div>
     </>
   );

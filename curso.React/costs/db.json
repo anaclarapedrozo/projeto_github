@@ -54,21 +54,30 @@
         "id": "4",
         "name": "Planejamento"
       },
-      "cost": 1221,
-      "services": [
-        {
-          "name": "Blue Lock",
-          "cost": "1200",
-          "description": "Fut",
-          "id": "5f62be59-41ce-4bc9-9c0e-550cdf6ed7eb"
-        },
-        {
-          "name": "Kenma",
-          "cost": "21",
-          "description": "è mo",
-          "id": "e858344b-a6ee-429b-b8ef-9665a7614ff6"
-        }
-      ]
+      "cost": 0,
+      "services": []
+    },
+    {
+      "id": "152c",
+      "name": "Haikyuu",
+      "budget": "50000",
+      "category": {
+        "id": "1",
+        "name": "Infra"
+      },
+      "cost": 0,
+      "services": []
+    },
+    {
+      "id": "197c",
+      "name": "gfd",
+      "budget": "56565444",
+      "category": {
+        "id": "4",
+        "name": "Planejamento"
+      },
+      "cost": 0,
+      "services": []
     }
   ],
   "categories": [

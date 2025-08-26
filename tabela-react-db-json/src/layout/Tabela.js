@@ -5,7 +5,9 @@ import { deletar } from "../service/api";
 import { useState } from "react";
 import CheckboxForm from "./CheckBoxForm";
 function Tabela({ lista, carregarPg }) {
+
   const [selecionados, setSelecionados] = useState([]);
+  const [cpfFormatado, setCpfFormatado] = useState([])
 
   async function handleDelete(id) {
     await deletar(id).then(() => {
@@ -23,6 +25,8 @@ function Tabela({ lista, carregarPg }) {
     
     carregarPg();
   }
+
+  
 
   return (
     <div>
@@ -49,7 +53,7 @@ function Tabela({ lista, carregarPg }) {
               lista?.map((pessoa, i) => {
                 return (
                   <>
-                    <tr key={i}>
+                    <tr key={pessoa.id}>
                       <td>{pessoa.nome}</td>
                       <td>{pessoa.idade}</td>
                       <td>{pessoa.cpf}</td>

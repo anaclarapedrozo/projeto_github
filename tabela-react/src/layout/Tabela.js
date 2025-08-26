@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 import styles from "./Tabela.module.css";
-import { FaPencil } from "react-icons/fa6";
 import { FaTrashAlt } from "react-icons/fa";
 import Modal from "./Modal";
 
-function Tabela({ lista }) {
-  useEffect(() => {
-    console.log("useEffect -> ", lista);
-  }, [lista]);
+function Tabela({ lista, setLista }) {
 
-  const [i, setI] = useState(null)
-
-  function deletar() {
-    lista.splice(i, 4);
-  }
+  const removerLinha = (i) => {
+    const novosDados = [...lista];
+    novosDados.splice(i, 1);
+    setLista(novosDados);
+  };
 
   return (
     <div>
       <div className={styles.tabela_div}>
+        <h2>Tabela</h2>
         <table className={styles.tabela}>
           <thead>
             <tr>
@@ -35,28 +32,35 @@ function Tabela({ lista }) {
                 <tr>Sem dados</tr>
               </tr>
             ) : (
-              lista.map((pessoa, setI) => {
+              lista.map((pessoa, i) => {
                 return (
-                  <tr key={setI}>
-                    <td>{pessoa.nome}</td>
-                    <td>{pessoa.idade}</td>
-                    <td>{pessoa.cpf}</td>
-                    <td>{pessoa.estadoCivil}</td>
-                    <td>
-                      <Modal
-                        valueName={pessoa.nome}
-                        valueIdade={pessoa.idade}
-                        valueCpf={pessoa.cpf}
-                        valueEstado={pessoa.estadoCivil}
-                        index={setI}
-                      />
-                    </td>
-                    <td>
-                      <button className={styles.btnLixo} onClick={deletar}>
-                        <FaTrashAlt />
-                      </button>
-                    </td>
-                  </tr>
+                  <>
+                    <tr key={i}>
+                      <td>{pessoa.nome}</td>
+                      <td>{pessoa.idade}</td>
+                      <td>{pessoa.cpf}</td>
+                      <td>{pessoa.estadoCivil}</td>
+                      <td>
+                        <Modal
+                          valueName={pessoa.nome}
+                          valueIdade={pessoa.idade}
+                          valueCpf={pessoa.cpf}
+                          valueEstado={pessoa.estadoCivil}
+                          lista={lista}
+                          setLista={setLista}
+                          index={i}
+                        />
+                      </td>
+                      <td>
+                        <button
+                          className={styles.btnLixo}
+                          onClick={() => removerLinha(i)}
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      </td>
+                    </tr>
+                  </>
                 );
               })
             )}

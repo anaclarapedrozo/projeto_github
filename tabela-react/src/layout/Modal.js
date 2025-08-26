@@ -1,18 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPencil } from "react-icons/fa6";
 import styles from "./Modal.module.css";
 
-function Modal({ valueName, valueIdade, valueCpf, valueEstado, index, lista }) {
+function Modal({
+  valueName,
+  valueIdade,
+  valueCpf,
+  valueEstado,
+  setLista,
+  index,
+  lista,
+}) {
   const [modalAberto, setModalAberto] = useState(false);
 
-  const [nome, setNome] = useState(`${valueName}`);
-  const [idade, setIdade] = useState(`${valueIdade}`);
-  const [estadoCivil, setEstadoCivil] = useState(`${valueEstado}`);
-  const [cpf, setCpf] = useState(`${valueCpf}`);
+  const [nome, setNome] = useState();
+  const [idade, setIdade] = useState();
+  const [estadoCivil, setEstadoCivil] = useState();
+  const [cpf, setCpf] = useState();
 
-  function handleSalvar() {
-    console.log("salvo")
-  }
+  useEffect(() => {
+    if(modalAberto){
+      setNome(valueName)
+      setIdade(valueIdade)
+      setEstadoCivil(valueEstado)
+      setCpf(valueCpf)
+      console.log('toda vez que o modal tiver aberto os valores nos inputs irao atualizar.')
+    }
+  }, [modalAberto])
+
+  const handleSalvar = (index) => {
+    let newUser = {
+      nome: nome,
+      idade: idade,
+      estadoCivil: estadoCivil,
+      cpf: cpf,
+    };
+    const novosDados = [...lista];
+    novosDados.splice(index, 1, newUser);
+    setModalAberto(false);
+    setLista(novosDados);
+  };
 
   function SetModal() {
     setModalAberto(true);
@@ -64,7 +91,7 @@ function Modal({ valueName, valueIdade, valueCpf, valueEstado, index, lista }) {
               ></input>
 
               <div className={styles.btn}>
-                <button onClick={handleSalvar}>Salvar</button>
+                <button onClick={() => handleSalvar(index)}>Salvar</button>
                 <button onClick={closeModal}>Cancelar</button>
               </div>
             </div>

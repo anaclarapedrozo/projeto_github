@@ -12,7 +12,6 @@ function PaginaInicial() {
   const [cpf, setCpf] = useState(null);
   const [pessoas, setPessoas] = useState([]);
 
-
   function handleCadastro() {
     let user = {
       nome: nome,
@@ -26,6 +25,12 @@ function PaginaInicial() {
     setEstadoCivil("");
     setCpf("");
   }
+
+  const removerLinha = (id) => {
+    const novosDados = [...pessoas];
+    novosDados.splice(id, 1);
+    setPessoas(novosDados);
+  };
 
   return (
     <div className={styles.div_inicial}>
@@ -58,9 +63,14 @@ function PaginaInicial() {
         onChange={(e) => setCpf(e.target.value)}
         value={cpf}
       />
-      <button onClick={handleCadastro} className={styles.btnSalvar}>Salvar</button>
+      <button onClick={handleCadastro} className={styles.btnSalvar}>
+        Salvar
+      </button>
       <div className={styles.tabelinha}>
-        <Tabela lista={pessoas}/>
+        <Tabela
+          lista={pessoas}
+          setLista={setPessoas}
+        />
       </div>
     </div>
   );
