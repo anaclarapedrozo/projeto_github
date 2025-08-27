@@ -3,8 +3,10 @@ package projeto.lab.toDoLab.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import projeto.lab.toDoLab.dto.ToDoDto;
 import projeto.lab.toDoLab.dto.ToDoRecordDto;
 import projeto.lab.toDoLab.model.entity.ToDo;
 import projeto.lab.toDoLab.service.ToDoService;
@@ -19,6 +21,7 @@ public class ToDoController {
     @Autowired
     private ToDoService toDoService;
 
+
     @PostMapping
     public ResponseEntity<?> newToDo(@RequestBody @Valid ToDoRecordDto toDoDto){
 
@@ -29,18 +32,24 @@ public class ToDoController {
             return ResponseEntity.badRequest().build();
         }
 
-
     }
 
 
-    @PutMapping
-    public ResponseEntity<?> editarTarefa(@RequestBody ToDoRecordDto toDoDto){
+    @PutMapping("/{id}")
+    public ResponseEntity<?> editarTarefa(@PathVariable("id") Long id,  @RequestBody ToDoRecordDto toDoDto){
         return null;
     }
 
+
     @GetMapping
-    public List<ToDo> returnAllToDos(){
+    public List<ToDoDto> returnAllToDos(){
         return toDoService.returnAll();
+    }
+
+
+    @DeleteMapping
+    public ResponseEntity<?> deletar(){
+        return null;
     }
 
 

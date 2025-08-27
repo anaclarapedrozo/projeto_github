@@ -4,12 +4,14 @@ package projeto.lab.toDoLab.service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import projeto.lab.toDoLab.dto.ToDoDto;
 import projeto.lab.toDoLab.dto.ToDoRecordDto;
 import projeto.lab.toDoLab.model.entity.ToDo;
 import projeto.lab.toDoLab.model.enums.Status;
 import projeto.lab.toDoLab.repository.ToDoRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ToDoService {
@@ -26,14 +28,14 @@ public class ToDoService {
     }
 
 
-    public List<ToDo> returnAll(){
-        List<ToDoRecordDto> lista = toDoRepository.findAll().stream().map(todo -> {
-            var toDo = new ToDoRecordDto();
+    public List<ToDoDto> returnAll(){
+        return toDoRepository.findAll().stream().map(todo -> {
+            var toDo = new ToDoDto();
             BeanUtils.copyProperties(todo, toDo);
             return toDo;
-        })
-
-
+        }).toList();
 
     }
+
+
 }
