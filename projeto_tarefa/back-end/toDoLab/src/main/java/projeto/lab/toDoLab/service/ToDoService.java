@@ -25,6 +25,7 @@ public class ToDoService {
         BeanUtils.copyProperties(toDoDto, toDo);
         toDo.setStatus(Status.PENDENTE);
         toDoRepository.save(toDo);
+        System.out.println(toDo);
     }
 
 
@@ -35,6 +36,17 @@ public class ToDoService {
             return toDo;
         }).toList();
 
+    }
+
+
+    public void deletar (Long id){
+        var toDoBuscado = toDoRepository.findById(id);
+        toDoRepository.findAll().forEach(tarefa -> {
+            if(!tarefa.getId().equals(toDoBuscado.get().getId())){
+                throw new RuntimeException("Não econtramos esse to-do na base de dados");
+            }
+        });
+        toDoRepository.deleteById(id);
     }
 
 

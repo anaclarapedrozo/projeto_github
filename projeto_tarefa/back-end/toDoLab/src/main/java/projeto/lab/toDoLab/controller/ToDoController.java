@@ -25,6 +25,7 @@ public class ToDoController {
     @PostMapping
     public ResponseEntity<?> newToDo(@RequestBody @Valid ToDoRecordDto toDoDto){
 
+
         try{
             toDoService.salvar(toDoDto);
             return ResponseEntity.ok(toDoDto);
@@ -47,9 +48,19 @@ public class ToDoController {
     }
 
 
-    @DeleteMapping
-    public ResponseEntity<?> deletar(){
-        return null;
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deletar(@PathVariable("id") Long id){
+        try{
+            toDoService.deletar(id);
+            return ResponseEntity.notFound().build();
+        }catch(IllegalArgumentException erro){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/buscar")
+    public String retornar(){
+        return "teste";
     }
 
 
