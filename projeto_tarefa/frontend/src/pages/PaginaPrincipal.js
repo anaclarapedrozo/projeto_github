@@ -13,6 +13,7 @@ function PaginaPrincipal() {
   const [info, setInfos] = useState([]);
   const [valorStatus, setValorStatus] = useState("");
   const status = [
+    
     {
       id: "1",
       name: "Todos",
