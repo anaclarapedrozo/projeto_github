@@ -18,7 +18,6 @@ public class ToDoDto {
     private String nome;
     private LocalDate data;
     private String categories;
-
     @Enumerated(EnumType.STRING)
     private Status status;
 }
