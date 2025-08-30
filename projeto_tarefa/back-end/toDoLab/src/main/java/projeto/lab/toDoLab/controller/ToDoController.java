@@ -5,15 +5,12 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import projeto.lab.toDoLab.dto.ToDoDto;
 import projeto.lab.toDoLab.dto.ToDoDtoRecord;
 import projeto.lab.toDoLab.dto.ToDoRequestDto;
-import projeto.lab.toDoLab.model.entity.Categories;
 import projeto.lab.toDoLab.model.entity.ToDo;
 import projeto.lab.toDoLab.repository.CategoriaRepository;
 import projeto.lab.toDoLab.repository.ToDoRepository;
 import projeto.lab.toDoLab.service.ToDoService;
-
 
 import java.util.List;
 

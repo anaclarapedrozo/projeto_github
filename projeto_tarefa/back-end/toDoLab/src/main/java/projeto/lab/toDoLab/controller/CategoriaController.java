@@ -1,6 +1,7 @@
 package projeto.lab.toDoLab.controller;
 
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +24,17 @@ public class CategoriaController {
     CategoriaRepository categoriaRepository;
 
 
-
-
     @PostMapping("/salvar")
-    public ResponseEntity<CategoriaDto> salvar(@RequestBody CategoriaDto categoria){
+    public ResponseEntity<?> salvar(@RequestBody @Valid CategoriaDto categoria){
+
+        try{
             categoriaService.salvarCatetegoria(categoria);
             return ResponseEntity.ok(categoria);
+
+        } catch (IllegalArgumentException exception) {
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        }
+
     }
 
 
