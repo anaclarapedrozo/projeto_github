@@ -37,11 +37,13 @@ public class ToDoController {
     @PostMapping("/salvar")
     public ResponseEntity<?> criarTarefa(@RequestBody @Valid ToDoDtoRecord toDoDto){
 
+        try{
+            toDoService.salvar(toDoDto);
+            return ResponseEntity.ok(toDoDto);
 
-
-        toDoService.salvar(toDoDto);
-        return ResponseEntity.ok(toDoDto);
-
+        }catch (IllegalArgumentException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        }
     }
 
 
