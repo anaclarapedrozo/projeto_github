@@ -16,7 +16,6 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CategoriaController {
 
-
     @Autowired
     CategoriaService categoriaService;
 

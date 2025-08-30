@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projeto.lab.toDoLab.dto.ToDoDto;
 import projeto.lab.toDoLab.dto.ToDoDtoRecord;
+import projeto.lab.toDoLab.dto.ToDoRequestDto;
 import projeto.lab.toDoLab.model.entity.Categories;
 import projeto.lab.toDoLab.model.entity.ToDo;
 import projeto.lab.toDoLab.repository.CategoriaRepository;
@@ -47,16 +48,10 @@ public class ToDoController {
 //        toDoService.editarTarefa(id, toDo);
 //    }
 
-    @PutMapping("/{id}")
-    public void editar(@PathVariable("id") Long id, @RequestBody ToDoDtoRecord toDoDto){
+    @PatchMapping("/{id}")
+    public void editar(@PathVariable("id") Long id, @RequestBody ToDoRequestDto toDoDto){
         toDoService.editarTarefa(id, toDoDto);
-//        ToDo todo = toDoRepository.findById(id).orElse(null);
-//        todo.setNome(toDoDto.getNome());
-//        Categories categories = categoriaRepository.findByName(toDoDto.getCategories()).orElse(null);
-//        todo.setCategories(categories);
-//        todo.setData(toDoDto.getData());
-//        todo.setStatus(toDoDto.getStatus());
-//        toDoRepository.save(todo);
+
     }
 
 
@@ -68,26 +63,12 @@ public class ToDoController {
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable("id") Long id){
-
-
             toDoService.deletar(id);
 
 
     }
 
-//    @DeleteMapping("/{id}")
-//    public void deletar(@PathVariable("id") Long id){
-//
-//        toDoService.deletar(id);
-//
-//
-//    }
 
-
-    @GetMapping("/buscar")
-    public String retornar(){
-        return "teste";
-    }
 
 
 //    @DeleteMapping("/{nome}")
