@@ -28,14 +28,13 @@ public class ToDoService {
 
 
     public void salvar(ToDoDtoRecord toDoDto){
-
         ToDo toDo = new ToDo();
+
         BeanUtils.copyProperties(toDoDto, toDo);
         toDo.setStatus(Status.PENDENTE);
 
-        Categories categoria = categoriaRepository.findByName(toDoDto.categories()).orElse(null);
-        if(categoria != null) toDo.setCategories(categoria);
-        else throw new RuntimeException("Categoria não encontrada");
+        Categories categoria = categoriaRepository.findByName(toDoDto.categories()).orElseThrow( () -> new IllegalArgumentException("Categoria inexistente"));
+        toDo.setCategories(categoria);
         toDoRepository.save(toDo);
     }
 
@@ -51,33 +50,17 @@ public class ToDoService {
 
 
     public void deletar (Long id){
-        ToDo toDoBuscado = toDoRepository.findById(id).orElse(null);
-        if (toDoBuscado != null){
-            toDoRepository.delete(toDoBuscado);
-        }
-
-//        toDoRepository.findAll().forEach(tarefa -> {
-//            if(!tarefa.equals(id)){
-//                throw new RuntimeException("Não econtramos esse to-do na base de dados");
-//            }
-//            toDoRepository.deleteById(id);
-//        });
-
+        ToDo toDoBuscado = toDoRepository.findById(id).orElseThrow( () -> new IllegalArgumentException("To-do inexistente"));
+        toDoRepository.delete(toDoBuscado);
     }
 
-//    public void deletar (Long id){
-//        var toDoBuscado = toDoRepository.findById(id);
-//        toDoRepository.deleteById(id);
-//    }
 
 
     public void deletarPeloNome(String nome){
         var todoBuscado = toDoRepository.findByNome(nome);
 
         if(todoBuscado != null) toDoRepository.delete(todoBuscado);
-
     }
-
 
 
     public void editarTarefa(Long id, ToDoRequestDto toDoDto){
@@ -89,12 +72,18 @@ public class ToDoService {
         todo.setCategories(categories);
 
         toDoRepository.save(todo);
-
     }
 
 
     public List<ToDo> retornarTodDosComId(){
         return toDoRepository.findAll();
+    }
+
+
+    public void marcarComoConcluido(Long id){
+        ToDo toDo = toDoRepository.findById(id).orElseThrow( () -> new IllegalArgumentException("Não encontramos esse to-do na base de dados"));
+        toDo.setStatus(Status.CONCLUIDO);
+        toDoRepository.save(toDo);
     }
 
 

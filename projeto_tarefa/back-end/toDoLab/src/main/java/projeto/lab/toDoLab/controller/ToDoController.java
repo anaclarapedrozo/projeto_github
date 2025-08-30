@@ -37,16 +37,14 @@ public class ToDoController {
     @PostMapping("/salvar")
     public ResponseEntity<?> criarTarefa(@RequestBody @Valid ToDoDtoRecord toDoDto){
 
+
+
         toDoService.salvar(toDoDto);
         return ResponseEntity.ok(toDoDto);
 
     }
 
 
-//    @PutMapping("/{id}")
-//    public void editarTarefa(@PathVariable("id") Long id, @RequestBody ToDoDto toDo){
-//        toDoService.editarTarefa(id, toDo);
-//    }
 
     @PatchMapping("/{id}")
     public void editar(@PathVariable("id") Long id, @RequestBody ToDoRequestDto toDoDto){
@@ -62,30 +60,33 @@ public class ToDoController {
 
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable("id") Long id){
-            toDoService.deletar(id);
+    public ResponseEntity<?> deletar(@PathVariable("id") Long id){
 
+        try{
+            toDoService.deletar(id);
+            return ResponseEntity.ok("Tarefa deletada");
+
+        }catch (IllegalArgumentException exception){
+            return ResponseEntity.badRequest().body(exception.getMessage());
+        }
+    }
+
+
+    @GetMapping("/concluir/{id}")
+    public ResponseEntity<?> marcarComoConcluido(@PathVariable ("id") Long id){
+
+        try{
+            toDoService.marcarComoConcluido(id);
+            return ResponseEntity.ok("Tarefa concluida");
+        }catch (IllegalArgumentException exception){
+            return ResponseEntity.unprocessableEntity().body(exception.getMessage());
+        }
 
     }
 
 
 
 
-//    @DeleteMapping("/{nome}")
-//    public void deletar(@PathVariable("nome") String nome){
-//        toDoService.deletarPeloNome(nome);
-//    }
-
-//    @PostMapping("/teste")
-//    public void teste(@RequestBody ToDoDtoTeste toDoDto){
-//        System.out.println(toDoDto);
-//    }
-
-
-//    @GetMapping("/concluir")
-//    public void marcarComoConcluido(@PathVariable ("id") Long id){
-//
-//    }
 
 
 
