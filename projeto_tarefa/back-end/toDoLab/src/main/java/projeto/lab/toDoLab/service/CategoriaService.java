@@ -8,8 +8,6 @@ import projeto.lab.toDoLab.model.entity.Categories;
 import projeto.lab.toDoLab.repository.CategoriaRepository;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class CategoriaService {

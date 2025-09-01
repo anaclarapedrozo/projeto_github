@@ -21,6 +21,9 @@ export async function getTarefas() {
   return resposta.data;
 }
 
+
+
+
 export async function getDeletar(id) {
   await instance.delete(`/tarefas/${id}`);
 }
