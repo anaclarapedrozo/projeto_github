@@ -71,7 +71,7 @@ public class ToDoController {
     }
 
 
-    @GetMapping("/concluir/{id}")
+    @PatchMapping("/concluir/{id}")
     public ResponseEntity<?> marcarComoConcluido(@PathVariable ("id") Long id){
 
         try{
@@ -82,6 +82,8 @@ public class ToDoController {
         }
 
     }
+
+
 
 
 
