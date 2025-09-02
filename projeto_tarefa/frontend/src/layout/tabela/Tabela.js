@@ -18,7 +18,7 @@ function Tabela({ lista, carregarPg, categorias}) {
   }
 
   const handleCheckBox = async (e, id, trf) => {
-    if (trf.status === "pendente") {
+    if (trf.status === "PENDENTE") {
       await editarStatus(id);
     } else {
       await voltarStatus(id);
@@ -53,7 +53,7 @@ function Tabela({ lista, carregarPg, categorias}) {
                 <td>
                   <input
                     type="checkbox"
-                    checked={inf.status === "concluido"}
+                    checked={inf.status === "CONCLUIDO"}
                     onChange={(e) => handleCheckBox(e, inf.id, inf.status, inf)}
                   />
                 </td>

@@ -35,11 +35,11 @@ export async function getDeletar(id) {
 }
 
 export async function editarStatus(id) {
-  await instance2.patch(`/tarefa/concluir/${id}`, { status: "concluido" });
+  await instance2.patch(`/tarefa/concluir/${id}`);
 }
 
 export async function voltarStatus(id) {
-  await instance2.patch(`/tarefa/concluir/${id}`, { status: "pendente" });
+  await instance2.patch(`/tarefa/voltar/${id}`);
 }
 
 export async function editarTarefa(id, obj) {
