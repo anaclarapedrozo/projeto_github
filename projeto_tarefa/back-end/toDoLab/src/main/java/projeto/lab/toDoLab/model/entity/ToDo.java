@@ -36,6 +36,5 @@ public class ToDo {
 
 
     @Column(name = "status")
-    @Enumerated(EnumType.STRING)
-    private Status status;
+    private String status;
 }

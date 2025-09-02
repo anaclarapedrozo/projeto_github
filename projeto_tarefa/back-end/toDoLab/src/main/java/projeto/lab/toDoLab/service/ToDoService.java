@@ -31,7 +31,6 @@ public class ToDoService {
         ToDo toDo = new ToDo();
 
         BeanUtils.copyProperties(toDoDto, toDo);
-        toDo.setStatus(Status.PENDENTE);
 
         Categories categoria = categoriaRepository.findByName(toDoDto.categories()).orElseThrow( () -> new IllegalArgumentException("Categoria inexistente"));
         toDo.setCategories(categoria);
@@ -66,9 +65,12 @@ public class ToDoService {
     public void editarTarefa(Long id, ToDoRequestDto toDoDto){
 
         ToDo todo = toDoRepository.findById(id).orElse(null);
+
         if(todo == null) throw new IllegalArgumentException("To-do Inexistente");
         Categories categories = categoriaRepository.findByName(toDoDto.categories()).orElse(null);
-        BeanUtils.copyProperties(toDoDto, todo);
+//        BeanUtils.copyProperties(toDoDto, todo);
+        todo.setNome(toDoDto.nome());
+        todo.setData(toDoDto.data());
         todo.setCategories(categories);
 
         toDoRepository.save(todo);
@@ -82,12 +84,16 @@ public class ToDoService {
 
     public void marcarComoConcluido(Long id){
         ToDo toDo = toDoRepository.findById(id).orElseThrow( () -> new IllegalArgumentException("Não encontramos esse to-do na base de dados"));
-        toDo.setStatus(Status.CONCLUIDO);
+        toDo.setStatus("Concluído");
         toDoRepository.save(toDo);
     }
 
 
-
+    public void voltarStatus(Long id){
+        ToDo toDo = toDoRepository.findById(id).orElseThrow( () -> new IllegalArgumentException("tarefa não encontrada") );
+        toDo.setStatus("Pendente");
+        toDoRepository.save(toDo);
+    }
 
 
 
