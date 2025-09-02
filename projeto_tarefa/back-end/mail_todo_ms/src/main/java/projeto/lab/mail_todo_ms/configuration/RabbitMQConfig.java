@@ -1,6 +1,7 @@
 package projeto.lab.mail_todo_ms.configuration;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,5 +21,8 @@ public class RabbitMQConfig {
 
 
     @Bean
-    public Jackson2JsonMessageConverter
+    public Jackson2JsonMessageConverter jackson2JsonMessageConverter(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        return new Jackson2JsonMessageConverter(objectMapper);
+    }
 }
