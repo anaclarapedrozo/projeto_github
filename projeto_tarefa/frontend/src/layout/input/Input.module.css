@@ -3,6 +3,7 @@
   flex-direction: column;
   margin: 10px;
   margin-top: 35px;
+  margin-left: 30px;
 }
 
 .div_container input {
@@ -15,6 +16,6 @@
 }
 
 .div_container label {
-  color: #A294F9;
+  color: #222;
   font-weight: inherit;
 }

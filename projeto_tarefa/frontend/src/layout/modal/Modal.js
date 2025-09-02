@@ -17,16 +17,24 @@ function Modal({ categorias, tarefa, setFecharModal, carregarPg }) {
     editarTarefa(id, {
       nome: nome,
       data: data,
-      categories: tarefa.categorie,
-      status: tarefa.status,
+      categories: cat
     });
     setFecharModal(false);
     carregarPg();
+    
   };
+
+  const handleSair = () => {
+    setFecharModal(false);
+  };
+  console.log("tarefa.categorie :>> ", tarefa.categorie);
 
   return (
     <div className={styles.div_fundo}>
       <div className={styles.div_modal}>
+        <button className={styles.btnSair} onClick={handleCancelar}>
+          X
+        </button>
         <h2>Editar tarefa</h2>
         <Input
           type="text"
@@ -42,7 +50,17 @@ function Modal({ categorias, tarefa, setFecharModal, carregarPg }) {
           value={data}
           onChange={(e) => setData(e.target.value)}
         />
-        <Select lista={categorias} onChange={(e) => setCat(e.target.value)} />
+        <img
+          src="/images/tarefa.png"
+          alt="mc gorila"
+          className={styles.mcgorila}
+        />
+        <Select
+          lista={categorias}
+          value={cat}
+          onChange={(e) => setCat(e.target.value)}
+          texto="Escolha a categoria"
+        />
         <button
           className={styles.btnSalvar}
           onClick={() => handleSalvar(tarefa.id, tarefa)}

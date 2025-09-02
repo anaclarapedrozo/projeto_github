@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Input from "../layout/input/Input";
 import Select from "../layout/select/Select";
 import styles from "./PaginaPrincipal.module.css";
-import { getCategories, getTarefas, postTarefas} from "../service/api";
+import { getCategories, getTarefas, postTarefas } from "../service/api";
 import Tabela from "../layout/tabela/Tabela";
+import { useLocation, useNavigate } from "react-router-dom";
+import { FiLogOut } from "react-icons/fi";
 
 function PaginaPrincipal() {
   const [nome, setNome] = useState("");
@@ -12,6 +14,11 @@ function PaginaPrincipal() {
   const [categorias, setCategorias] = useState([]);
   const [info, setInfos] = useState([]);
   const [valorStatus, setValorStatus] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const nomeLocalizado = location.state?.nome || "user";
+  
+
   const status = [
     {
       id: "1",
@@ -31,6 +38,7 @@ function PaginaPrincipal() {
 
   useEffect(() => {
     carregarCategorias();
+    console.log('info :>> ', info);
   }, []);
 
   async function carregarPagina() {
@@ -44,6 +52,7 @@ function PaginaPrincipal() {
       }
 
       setInfos(tarefasFiltradas);
+      
     } catch (err) {
       console.error("Erro ao buscar usuário");
     }
@@ -53,6 +62,7 @@ function PaginaPrincipal() {
     try {
       const categoriasDados = await getCategories();
       setCategorias(categoriasDados);
+      console.log("categorias :>> ", categorias);
     } catch (error) {
       console.log("carregarCategorias", error);
     }
@@ -63,16 +73,16 @@ function PaginaPrincipal() {
       if (nome === "" || data === "") {
         alert("Preencha todos os campos");
       } else {
-        postTarefas({
+        await postTarefas({
           nome: nome,
           data: data,
-          categories: categoria,
-          status: "pendente",
+          categories: categoria
         });
       }
 
       const tarefas = await getTarefas();
       setInfos(tarefas);
+      console.log("info :>> ", info);
       setNome("");
       setData("");
     } catch (erro) {
@@ -81,11 +91,20 @@ function PaginaPrincipal() {
     carregarPagina();
   }
 
+  function sair() {
+    navigate("/");
+  }
+
   return (
     <>
       <div className={styles.container_pag}>
+        <button onClick={sair} className={styles.btnSair}>
+          <FiLogOut />
+        </button>
         <h2>Minhas tarefas</h2>
+        <h1>OLÁ, {nomeLocalizado.toUpperCase()}!</h1>
         <h4>Adicionar tarefas</h4>
+
         <Input
           type="text"
           placeholder="Nome da tarefa"
@@ -101,6 +120,7 @@ function PaginaPrincipal() {
           value={data}
         />
         <Select
+          texto="Selecione uma categoria"
           lista={categorias}
           onChange={(e) => setCategoria(e.target.value)}
           value={categoria}
@@ -109,10 +129,12 @@ function PaginaPrincipal() {
           Enviar
         </button>
         <Select
+          texto={"Filtrar por status"}
           lista={status}
           onChange={(e) => setValorStatus(e.target.value)}
           className={styles.selectFiltro}
         />
+
         <div>
           <Tabela
             lista={info}

@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-
 import styles from "./Tabela.module.css";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
@@ -14,10 +12,12 @@ function Tabela({ lista, carregarPg, categorias}) {
   async function deletar(id) {
     await getDeletar(id).then(() => {
       carregarPg();
+      
     });
+    console.log('id :>> ', id);
   }
 
-  const handleCheckBox = async (e, id, status, trf) => {
+  const handleCheckBox = async (e, id, trf) => {
     if (trf.status === "pendente") {
       await editarStatus(id);
     } else {
@@ -58,7 +58,7 @@ function Tabela({ lista, carregarPg, categorias}) {
                   />
                 </td>
                 <td>{inf.nome}</td>
-                <td>{inf.categories || "Indefinido"}</td>
+                <td>{inf.categories.name || "Indefinido"}</td>
                 <td
                   className={
                     inf.status === "pendente"

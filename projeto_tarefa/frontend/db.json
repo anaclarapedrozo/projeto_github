@@ -1,37 +1,37 @@
 {
   "categories": [
     {
-      "id": "0",
+      "id": 0,
       "name": "Escolha uma categoria"
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "Estudos"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Casa"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Trabalho"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Fisíco"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Pessoal"
     }
   ],
   "tarefas": [
     {
-      "id": "d6d3",
+      "id": 1,
       "nome": "Limpar a varanda",
       "data": "2025-08-22",
       "categories": "Casa",
-      "status": "pendente"
+      "status": "concluido"
     },
     {
       "id": "d686",
@@ -45,7 +45,7 @@
       "nome": "Fazer suco de jaca",
       "data": "2025-09-03",
       "categories": "Pessoal",
-      "status": "pendente"
+      "status": "concluido"
     },
     {
       "id": "c9ae",
