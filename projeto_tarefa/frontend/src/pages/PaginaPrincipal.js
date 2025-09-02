@@ -20,6 +20,7 @@ function PaginaPrincipal() {
   
 
   const status = [
+    
     {
       id: "1",
       name: "Todos",

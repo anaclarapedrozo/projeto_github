@@ -26,6 +26,9 @@ export async function getTarefas() {
   return resposta.data;
 }
 
+
+
+
 export async function getDeletar(id) {
   console.log('id :>> ', id);
   await axios.delete(`http://10.0.0.29:8083/tarefa/${id}`);

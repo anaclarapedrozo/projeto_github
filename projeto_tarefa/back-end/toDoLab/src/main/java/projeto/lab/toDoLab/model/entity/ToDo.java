@@ -29,8 +29,11 @@ public class ToDo {
     @Column(name = "data_entrega")
     private LocalDate data;
 
-    @Column(name = "categoria")
-    private String categories;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categories")
+    private Categories categories;
+
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
