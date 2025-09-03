@@ -3,6 +3,7 @@ package projeto.lab.toDoLab.service;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import projeto.lab.toDoLab.dto.UserRegisterDto;
 import projeto.lab.toDoLab.model.entity.User;
@@ -14,6 +15,9 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
 
     public void saveUser(UserRegisterDto userRegisterDto){
